@@ -11,3 +11,8 @@ public class SplitWiseApplication {
     }
 
 }
+/**
+ * SETTLE UP THE REQUIREMENMT
+ *
+ * CONTROLLERS --> SERVICE --> REPOSITORY
+ */
