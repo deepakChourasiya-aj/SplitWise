@@ -1,9 +1,11 @@
 package com.sw.splitwise.command;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
+@Component
 public class SettleUpGroupCommand implements Command {
-    private CommandKeywords commandKeywords;
 
     @Override
     public void execute(String input){
