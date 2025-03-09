@@ -31,7 +31,7 @@ public class SettleUpUserCommand implements Command {
     @Override
     public boolean matches(String input) {
         List<String> words = List.of(input.split(" "));
-
+        System.out.println("Executing SettleUpUserCommand Command.");
         return words.size()==2 && words.get(1).equals(CommandKeywords.settleUp);
     }
 }

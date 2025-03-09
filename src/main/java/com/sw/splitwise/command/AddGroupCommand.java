@@ -33,8 +33,9 @@ public class AddGroupCommand implements Command {
     @Override
     public boolean matches(String input){
         List<String> words = List.of(input.split(" "));
-
+        System.out.println("Executing AddGroup Command.");
         return words.size() == 3 && words.get(1).equals(CommandKeywords.addGroup);
+
     }
 
 }

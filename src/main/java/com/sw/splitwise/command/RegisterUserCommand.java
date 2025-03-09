@@ -17,6 +17,7 @@ public class RegisterUserCommand implements Command {
 
     @Override
     public void execute(String input){
+        System.out.println(input+"...at the register methodss...");
         List<String> words = List.of(input.split(" "));
 
         // NOW HERE TAKE THE REGISTER COMMAND
@@ -37,6 +38,7 @@ public class RegisterUserCommand implements Command {
     @Override
     public boolean matches(String input) {
         List<String> words = List.of(input.split(" "));
+        System.out.println("Executing RegisterUserCommand Command.");
         return words.size()==4 && words.get(0).equals(CommandKeywords.register);
     }
 }

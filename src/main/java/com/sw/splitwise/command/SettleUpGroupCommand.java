@@ -14,6 +14,7 @@ public class SettleUpGroupCommand implements Command {
     @Override
     public boolean matches(String input) {
         List<String> words = List.of(input.split(" "));
+        System.out.println("Executing SettleUpGroupCommand Command.");
         return words.size()==3 && words.get(0).equals("SettleUp");
     }
 }
