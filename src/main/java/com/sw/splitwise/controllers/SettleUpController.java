@@ -9,18 +9,18 @@ import java.util.List;
 
 @Controller
 public class SettleUpController {
-    private final SettleUpService settleUpService;
+    private SettleUpService settleUpService;
     /*
         will have methods related to settle up.
 
         settleup functionality should return the list of transaction
         which when executed will make the net amount of a user to be ZERO.
      */
-
     public SettleUpController(SettleUpService settleUpService) {
         this.settleUpService = settleUpService;
     }
-    SettleUpUserResponseDto settleUpUser(SettleUpUserRequestDto requestDto){
+
+    public SettleUpUserResponseDto settleUpUser(SettleUpUserRequestDto requestDto){
         SettleUpUserResponseDto responseDto = new SettleUpUserResponseDto();
        try{
            List<Expense> expenses = settleUpService.settleUpUser(requestDto.getUserId());
@@ -32,7 +32,7 @@ public class SettleUpController {
        return responseDto;
     }
 
-    SettleUpGroupResponseDto settleUpGroup(SettleUpGroupRequestDto requestDto){
+    public SettleUpGroupResponseDto settleUpGroup(SettleUpGroupRequestDto requestDto){
         SettleUpGroupResponseDto responseDto = new SettleUpGroupResponseDto();
         try{
             responseDto.setResponseStatus(ResponseStatus.SUCCESS);

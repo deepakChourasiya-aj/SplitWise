@@ -63,6 +63,14 @@ public class SettleUpService {
     }
 
     public List<Expense> settleUpGroup(Long groupId){
+        /**
+         *  1. GET THE GROUP FROM THE GIVEN GROUP ID
+         *  FROM THE DB
+         *  2. GET ALL THE EXPENSE IN WITHIN THIS GROUP  .
+         *  3. ITERATE THROUGH ALL THE EXPENSE AND FIND OUT WHO HAS PAID EXTRA/LESSER
+         *  FOR EVERY USER INVOVLED IN THE ABOVE LIST OF EXPENSE
+         *  4. USE MIN HEAP AND MAX HEAP TO FIND OUT THE LIST OF TRNASACTION WILL REQUIRE TO SETTLE UP THE USER.
+         */
         return null;
     }
 }

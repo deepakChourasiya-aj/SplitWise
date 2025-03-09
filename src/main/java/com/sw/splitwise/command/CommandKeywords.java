@@ -1,0 +1,8 @@
+package com.sw.splitwise.command;
+
+import lombok.Getter;
+import lombok.Setter;
+
+public class CommandKeywords {
+    public static String settleUp = "settleUp";
+}
