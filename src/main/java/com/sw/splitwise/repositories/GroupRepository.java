@@ -1,0 +1,12 @@
+package com.sw.splitwise.repositories;
+
+import com.sw.splitwise.models.Group;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface GroupRepository extends JpaRepository<Group, Long> {
+    Group save(Group group);
+
+    Optional<Group> findByName(String name);
+}

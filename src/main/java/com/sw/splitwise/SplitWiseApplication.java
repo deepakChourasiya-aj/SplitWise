@@ -20,7 +20,6 @@ public class SplitWiseApplication {
 
         while(true){
             String input = scanner.nextLine();
-
             commandExecutor.execute(input);
         }
     }
@@ -28,6 +27,5 @@ public class SplitWiseApplication {
 }
 /**
  * SETTLE UP THE REQUIREMENMT
- *
  * CONTROLLERS --> SERVICE --> REPOSITORY
  */

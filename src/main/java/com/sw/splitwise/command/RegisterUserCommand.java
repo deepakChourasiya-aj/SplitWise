@@ -19,7 +19,7 @@ public class RegisterUserCommand implements Command {
     public void execute(String input){
         List<String> words = List.of(input.split(" "));
 
-//        NOW HERE TAKE THE REGISTER COMMAND
+        // NOW HERE TAKE THE REGISTER COMMAND
         // EXTRACT THE USER DETAILS AND CALL THE CONTROLLER TO REGISTER THE NEW USER.
         String commandName = words.get(0);
         String name = words.get(1);
