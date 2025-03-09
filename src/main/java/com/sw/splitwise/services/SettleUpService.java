@@ -6,6 +6,7 @@ import com.sw.splitwise.models.ExpenseUser;
 import com.sw.splitwise.models.User;
 import com.sw.splitwise.repositories.ExpenseUserRepository;
 import com.sw.splitwise.repositories.UserRepository;
+import com.sw.splitwise.strategies.SettleUpStrategy;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -17,10 +18,12 @@ import java.util.Set;
 public class SettleUpService {
     private UserRepository userRepository;
     private ExpenseUserRepository expenseUserRepository;
+    private SettleUpStrategy settleUpStrategy;
 
-    public SettleUpService(UserRepository userRepository, ExpenseUserRepository expenseUserRepository) {
+    public SettleUpService(UserRepository userRepository, ExpenseUserRepository expenseUserRepository,SettleUpStrategy settleUpStrategy) {
         this.userRepository = userRepository;
         this.expenseUserRepository = expenseUserRepository;
+        this.settleUpStrategy = settleUpStrategy;
     }
 
     public List<Expense> settleUpUser(Long userId){
@@ -54,12 +57,29 @@ public class SettleUpService {
         // Not only heap algorithem we can have multiple algorithem to settle the expense,
         // here we can implement the strategy design pattern to(settleUpStrategy) to settleup the expenses,
         // also ask which method people want to use (good idea)..
-        List<Expense> finalExpenses =
+        List<Expense> finalExpenses = settleUpStrategy.settleUp(expensesToSettuleUp);
 
-        return null;
+        return finalExpenses;
     }
 
     public List<Expense> settleUpGroup(Long groupId){
         return null;
     }
 }
+
+
+/*
+ Expense(E) -> Dinner
+
+ u1, u2, u3, u4
+
+ PaidBy <E, U1, 800> <E, U3, 1200>
+ HadToPay <E, U1, 500> <E, U2, 500>  <E, U3, 500>  <E, U4, 500>
+
+
+ settleUp -> u3
+
+ Get all the expenseUsers in which u3 is involved.
+ <E, U3, 1200>
+ <E, U3, 500>
+ */
