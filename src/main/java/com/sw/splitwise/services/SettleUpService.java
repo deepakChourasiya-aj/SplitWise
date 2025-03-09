@@ -42,7 +42,7 @@ public class SettleUpService {
 
         User user = optionalUser.get();
 
-//        GET THE LIST OF EXPENSEUSERS OF PARTICULAR USER..
+//        GET THE LIST OF EXPENSEUSERS OF PARTICULAR USER.
         List<ExpenseUser> expenseUsers = expenseUserRepository.findByUser(user);
 
         Set<Expense> expenses = new HashSet<>();
@@ -51,13 +51,13 @@ public class SettleUpService {
         }
 
         // Convert a set into list.
-        List<Expense> expensesToSettuleUp = expenses.stream().toList();
+        List<Expense> epenseToSettleUp = expenses.stream().toList();
 
         // Heap Algorithem to settle up the list of expense.
         // Not only heap algorithem we can have multiple algorithem to settle the expense,
         // here we can implement the strategy design pattern to(settleUpStrategy) to settleup the expenses,
-        // also ask which method people want to use (good idea)..
-        List<Expense> finalExpenses = settleUpStrategy.settleUp(expensesToSettuleUp);
+        // also ask which method people want to use (good idea);
+        List<Expense> finalExpenses = settleUpStrategy.settleUp(epenseToSettleUp);
 
         return finalExpenses;
     }
@@ -69,7 +69,7 @@ public class SettleUpService {
          *  2. GET ALL THE EXPENSE IN WITHIN THIS GROUP  .
          *  3. ITERATE THROUGH ALL THE EXPENSE AND FIND OUT WHO HAS PAID EXTRA/LESSER
          *  FOR EVERY USER INVOVLED IN THE ABOVE LIST OF EXPENSE
-         *  4. USE MIN HEAP AND MAX HEAP TO FIND OUT THE LIST OF TRNASACTION WILL REQUIRE TO SETTLE UP THE USER.
+         *  4. USE MIN HEAP AND MAX HEAP TO FIND OUT THE LIST OF TRANSACTION WILL REQUIRE TO SETTLE UP THE USER.
          */
         return null;
     }

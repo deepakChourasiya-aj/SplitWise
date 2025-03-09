@@ -12,7 +12,6 @@ public class SettleUpController {
     private SettleUpService settleUpService;
     /*
         will have methods related to settle up.
-
         settleup functionality should return the list of transaction
         which when executed will make the net amount of a user to be ZERO.
      */

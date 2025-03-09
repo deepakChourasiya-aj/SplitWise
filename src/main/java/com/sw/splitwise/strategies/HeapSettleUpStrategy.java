@@ -11,6 +11,10 @@ public class HeapSettleUpStrategy implements SettleUpStrategy{
     public List<Expense> settleUp(List<Expense> expenses) {
         // HERE WE HAVE TO IMPLEMENT THE SETTLE UP STRATEGY USING THE HEAP
         // ALGORITHEM.. IMPLEMENT...IT..
+        System.out.println(expenses);
+        for(Expense expense : expenses){
+            System.out.println(expense+" User expense "+expense.getAmount()+" id: "+expense.getId());
+        }
         return List.of();
     }
 }
