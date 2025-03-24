@@ -3,6 +3,7 @@ package com.sw.splitwise.services;
 import com.sw.splitwise.exceptions.UserNotFoundException;
 import com.sw.splitwise.models.Expense;
 import com.sw.splitwise.models.ExpenseUser;
+import com.sw.splitwise.models.Transaction;
 import com.sw.splitwise.models.User;
 import com.sw.splitwise.repositories.ExpenseUserRepository;
 import com.sw.splitwise.repositories.UserRepository;
@@ -26,7 +27,7 @@ public class SettleUpService {
         this.settleUpStrategy = settleUpStrategy;
     }
 
-    public List<Expense> settleUpUser(Long userId){
+    public List<Transaction> settleUpUser(Long userId){
         /**
          *  1. GET THE USER FROM THE GIVEN USER ID FROM THE DB
          *  2. GET ALL THE EXPENSE IN WHICH THIS USER IS INVOLVED .
@@ -42,7 +43,7 @@ public class SettleUpService {
 
         User user = optionalUser.get();
 
-//        GET THE LIST OF EXPENSEUSERS OF PARTICULAR USER.
+//        GET THE LIST OF EXPENSE USERS OF PARTICULAR USER.
         List<ExpenseUser> expenseUsers = expenseUserRepository.findByUser(user);
 
         Set<Expense> expenses = new HashSet<>();
@@ -51,18 +52,18 @@ public class SettleUpService {
         }
 
         // Convert a set into list.
-        List<Expense> epenseToSettleUp = expenses.stream().toList();
+        List<Expense> expenseToSettleUp = expenses.stream().toList();
 
         // Heap Algorithem to settle up the list of expense.
         // Not only heap algorithem we can have multiple algorithem to settle the expense,
         // here we can implement the strategy design pattern to(settleUpStrategy) to settleup the expenses,
         // also ask which method people want to use (good idea);
-        List<Expense> finalExpenses = settleUpStrategy.settleUp(epenseToSettleUp);
+        List<Transaction> finalExpenses = settleUpStrategy.settleUp(expenseToSettleUp);
 
         return finalExpenses;
     }
 
-    public List<Expense> settleUpGroup(Long groupId){
+    public List<Transaction> settleUpGroup(Long groupId){
         /**
          *  1. GET THE GROUP FROM THE GIVEN GROUP ID
          *  FROM THE DB
@@ -83,7 +84,6 @@ public class SettleUpService {
 
  PaidBy <E, U1, 800> <E, U3, 1200>
  HadToPay <E, U1, 500> <E, U2, 500>  <E, U3, 500>  <E, U4, 500>
-
 
  settleUp -> u3
 

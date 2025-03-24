@@ -12,9 +12,9 @@ import java.util.List;
 @Setter
 @Entity(name="groupss")
 public class Group extends BaseModel{
-    // what all we need for the groupp.. think of it...
+    // what all we need for the groupp think of it...
     // name ,id ,List<Members/User> lets say, List<Expense> with each user and their ratio.
-//    private
+    // private
     private String name;
 
     @ManyToOne
