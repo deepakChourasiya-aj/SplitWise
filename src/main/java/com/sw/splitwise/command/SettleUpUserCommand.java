@@ -1,9 +1,11 @@
 package com.sw.splitwise.command;
 
 import com.sw.splitwise.controllers.SettleUpController;
+import com.sw.splitwise.dtos.ResponseStatus;
 import com.sw.splitwise.dtos.SettleUpGroupRequestDto;
 import com.sw.splitwise.dtos.SettleUpUserRequestDto;
 import com.sw.splitwise.dtos.SettleUpUserResponseDto;
+import com.sw.splitwise.models.Transaction;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -25,7 +27,17 @@ public class SettleUpUserCommand implements Command {
         SettleUpUserRequestDto requestDto = new SettleUpUserRequestDto();
         requestDto.setUserId(userId);
 
-        SettleUpUserResponseDto responseDto = settleUpController.settleUpUser(requestDto);
+        SettleUpUserResponseDto responseDto = this.settleUpController.settleUpUser(requestDto);
+
+        List<Transaction> transactions = responseDto.getTransactionsList();
+
+        if(responseDto.getResponseStatus().equals(ResponseStatus.FAILURE)){
+            System.out.println(responseDto.getResponseStatus()+" Something went wrong");
+        }else{
+            for(Transaction transaction : transactions){
+                System.out.println(transaction.getUserFrom().getName()+" should pay "+ transaction.getUserTo().getName()+" of amount "+transaction.getAmount());
+            }
+        }
     }
 
     @Override

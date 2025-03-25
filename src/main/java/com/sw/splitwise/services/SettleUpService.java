@@ -21,7 +21,7 @@ public class SettleUpService {
     private ExpenseUserRepository expenseUserRepository;
     private SettleUpStrategy settleUpStrategy;
 
-    public SettleUpService(UserRepository userRepository, ExpenseUserRepository expenseUserRepository,SettleUpStrategy settleUpStrategy) {
+    private SettleUpService(UserRepository userRepository, ExpenseUserRepository expenseUserRepository, SettleUpStrategy settleUpStrategy) {
         this.userRepository = userRepository;
         this.expenseUserRepository = expenseUserRepository;
         this.settleUpStrategy = settleUpStrategy;

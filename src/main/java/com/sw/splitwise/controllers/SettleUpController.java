@@ -2,6 +2,7 @@ package com.sw.splitwise.controllers;
 
 import com.sw.splitwise.dtos.*;
 import com.sw.splitwise.models.Expense;
+import com.sw.splitwise.models.Transaction;
 import com.sw.splitwise.services.SettleUpService;
 import org.springframework.stereotype.Controller;
 
@@ -22,8 +23,8 @@ public class SettleUpController {
     public SettleUpUserResponseDto settleUpUser(SettleUpUserRequestDto requestDto){
         SettleUpUserResponseDto responseDto = new SettleUpUserResponseDto();
        try{
-           List<Expense> expenses = settleUpService.settleUpUser(requestDto.getUserId());
-           responseDto.setExpenseList(expenses);
+           List<Transaction> settledTransactions = settleUpService.settleUpUser(requestDto.getUserId());
+           responseDto.setTransactionsList(settledTransactions);
            responseDto.setResponseStatus(ResponseStatus.SUCCESS);
        }catch (Exception e){
            responseDto.setResponseStatus(ResponseStatus.FAILURE);
