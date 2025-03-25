@@ -8,6 +8,7 @@ import com.sw.splitwise.models.User;
 import com.sw.splitwise.repositories.ExpenseUserRepository;
 import com.sw.splitwise.repositories.UserRepository;
 import com.sw.splitwise.strategies.SettleUpStrategy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -21,6 +22,7 @@ public class SettleUpService {
     private ExpenseUserRepository expenseUserRepository;
     private SettleUpStrategy settleUpStrategy;
 
+    @Autowired
     private SettleUpService(UserRepository userRepository, ExpenseUserRepository expenseUserRepository, SettleUpStrategy settleUpStrategy) {
         this.userRepository = userRepository;
         this.expenseUserRepository = expenseUserRepository;

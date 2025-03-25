@@ -4,6 +4,7 @@ import com.sw.splitwise.dtos.*;
 import com.sw.splitwise.models.Expense;
 import com.sw.splitwise.models.Transaction;
 import com.sw.splitwise.services.SettleUpService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class SettleUpController {
         settleup functionality should return the list of transaction
         which when executed will make the net amount of a user to be ZERO.
      */
+    @Autowired
     public SettleUpController(SettleUpService settleUpService) {
         this.settleUpService = settleUpService;
     }

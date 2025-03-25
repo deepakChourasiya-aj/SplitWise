@@ -4,11 +4,12 @@ import com.sw.splitwise.models.Expense;
 import com.sw.splitwise.models.ExpenseUser;
 import com.sw.splitwise.models.Transaction;
 import com.sw.splitwise.models.User;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-@Service
+@Component("HeapSettleUpStrategy")
 public class HeapSettleUpStrategy implements SettleUpStrategy{
     @Override
     public List<Transaction> settleUp(List<Expense> expenses) {

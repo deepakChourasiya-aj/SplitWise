@@ -6,12 +6,14 @@ import com.sw.splitwise.dtos.ResponseStatus;
 import com.sw.splitwise.models.Group;
 import com.sw.splitwise.repositories.GroupRepository;
 import com.sw.splitwise.services.GroupService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class GroupController {
     private GroupService groupService;
 
+    @Autowired
     public GroupController(GroupService groupService) {
         this.groupService = groupService;
     }
